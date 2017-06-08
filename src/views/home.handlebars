@@ -1,0 +1,99 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 page-content col-thin-right">
+                <div class="inner-box category-content">
+                    <h2 class="title-2">Browse Categories </h2>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 ">
+                            {{#each categoriesOne as |categoryValue categoryKey|}}
+                            <div class="cat-list">
+                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                    <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
+                                </h3>
+                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                    {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
+                                    <li><a href="category.html">{{subCategoryValue.name}}</a></li>
+                                    {{/each}}
+                                </ul>--}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="col-md-3 col-sm-3 ">
+                            {{#each categoriesTwo as |categoryValue categoryKey|}}
+                            <div class="cat-list">
+                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                    <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
+                                </h3>
+                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                    {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
+                                    <li><a href="category.html">{{subCategoryValue.name}}</a></li>
+                                    {{/each}}
+                                </ul>--}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="col-md-3 col-sm-3 ">
+                            {{#each categoriesThree as |categoryValue categoryKey|}}
+                            <div class="cat-list">
+                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                    <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
+                                </h3>
+                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                    {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
+                                    <li><a href="category.html">{{subCategoryValue.name}}</a></li>
+                                    {{/each}}
+                                </ul>--}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="col-md-3 col-sm-3 ">
+                            {{#each categoriesFour as |categoryValue categoryKey|}}
+                            <div class="cat-list">
+                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                    <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
+                                </h3>
+                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                    {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
+                                    <li><a href="category.html">{{subCategoryValue.name}}</a></li>
+                                    {{/each}}
+                                </ul>--}}
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{!--<div class="col-sm-3 page-sidebar col-thin-left">
+                <aside>
+                    <div class="inner-box no-padding">
+                        <div class="inner-box-content"><a href="#"><img class="img-responsive" src="/static/images/site/app.jpg" alt="tv"></a>
+                        </div>
+                    </div>
+                    <div class="inner-box">
+                        <h2 class="title-2">Popular Categories </h2>
+                        <div class="inner-box-content">
+                            <ul class="cat-list arrow">
+                                <li><a href="sub-category-sub-location.html"> Apparel (1,386) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Art (1,163) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Business Opportunities (4,974) </a>
+                                </li>
+                                <li><a href="sub-category-sub-location.html"> Community and Events (1,258) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Electronics and Appliances
+                                    (1,578) </a>
+                                </li>
+                                <li><a href="sub-category-sub-location.html"> Jobs and Employment (3,609) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Motorcycles (968) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Pets (1,188) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Services (7,583) </a></li>
+                                <li><a href="sub-category-sub-location.html"> Vehicles (1,129) </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="inner-box no-padding"><img class="img-responsive" src="/static/images/add2.jpg" alt="">
+                    </div>
+                </aside>
+            </div>--}}
+        </div>
+    </div>
+</div>
