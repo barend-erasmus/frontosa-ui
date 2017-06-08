@@ -29,6 +29,7 @@ export class Item {
         const categoryName: string = null;
         const h: string = hash(row);
         const name: string = to.capital(to.lower(description.split(',')[0].toString()));
+        
 
         return new Item(name, code, description, price, attributes, categoryCode, categoryName, subCategoryName, h);
     }
