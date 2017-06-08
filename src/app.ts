@@ -67,7 +67,9 @@ export class FrontosaUiApi {
     }
 
     private configureRoutes(app: express.Express) {
-        app.use(`/`, HomeRouter.index);
+        app.get(`/`, HomeRouter.index);
+        app.get(`/category`, HomeRouter.category);
+        app.get(`/item`, HomeRouter.item);
     }
 
     private configureErrorHandling(app: express.Express) {

@@ -1,3 +1,21 @@
+<div class="intro" style="background-image: url(/static/images/bg3.jpg);">
+    <div class="dtable hw100">
+        <div class="dtable-cell hw100">
+            <div class="container text-center">
+                <h1 class="intro-title animated fadeInDown"> Search Catalog</h1>
+                <p class="sub animateme fittext3 animated fadeIn"> Easily search for an item </p>
+                <form action="/category" method="GET" class="row search-row animated fadeInUp">
+                    <div class="col-lg-8 col-sm-8 search-col relative"><i class="icon-docs icon-append"></i>
+                        <input type="text" name="query" class="form-control has-icon" placeholder="I'm looking for a ..." value="">
+                    </div>
+                    <div class="col-lg-4 col-sm-4 search-col">
+                        <button type="submit" class="btn btn-primary btn-search btn-block"><i class="icon-search"></i><strong>Find</strong></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="main-container">
     <div class="container">
         <div class="row">
@@ -8,10 +26,11 @@
                         <div class="col-md-3 col-sm-3 ">
                             {{#each categoriesOne as |categoryValue categoryKey|}}
                             <div class="cat-list">
-                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                <h3 class="cat-title"><a href="/category?code={{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
                                     <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
                                 </h3>
-                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                {{!--
+                                <ul class="cat-collapse collapse in cat-id-1">
                                     {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
                                     <li><a href="category.html">{{subCategoryValue.name}}</a></li>
                                     {{/each}}
@@ -22,10 +41,11 @@
                         <div class="col-md-3 col-sm-3 ">
                             {{#each categoriesTwo as |categoryValue categoryKey|}}
                             <div class="cat-list">
-                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                <h3 class="cat-title"><a href="/category?code={{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
                                     <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
                                 </h3>
-                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                {{!--
+                                <ul class="cat-collapse collapse in cat-id-1">
                                     {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
                                     <li><a href="category.html">{{subCategoryValue.name}}</a></li>
                                     {{/each}}
@@ -36,10 +56,11 @@
                         <div class="col-md-3 col-sm-3 ">
                             {{#each categoriesThree as |categoryValue categoryKey|}}
                             <div class="cat-list">
-                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                <h3 class="cat-title"><a href="/category?code={{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
                                     <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
                                 </h3>
-                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                {{!--
+                                <ul class="cat-collapse collapse in cat-id-1">
                                     {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
                                     <li><a href="category.html">{{subCategoryValue.name}}</a></li>
                                     {{/each}}
@@ -50,10 +71,11 @@
                         <div class="col-md-3 col-sm-3 ">
                             {{#each categoriesFour as |categoryValue categoryKey|}}
                             <div class="cat-list">
-                                <h3 class="cat-title"><a href="/category/{{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
+                                <h3 class="cat-title"><a href="/category?code={{categoryValue.code}}"><i class="fa fa-paperclip ln-shadow"></i> {{categoryValue.name}} <span class="count">{{categoryValue.count}}</span> </a>
                                     <span data-target=".cat-id-1" data-toggle="collapse" class="btn-cat-collapsed collapsed"> <span class=" icon-down-open-big"></span>                                    </span>
                                 </h3>
-                                {{!--<ul class="cat-collapse collapse in cat-id-1">
+                                {{!--
+                                <ul class="cat-collapse collapse in cat-id-1">
                                     {{#each categoryValue.subCategories as |subCategoryValue subCategoryKey|}}
                                     <li><a href="category.html">{{subCategoryValue.name}}</a></li>
                                     {{/each}}
@@ -64,7 +86,8 @@
                     </div>
                 </div>
             </div>
-            {{!--<div class="col-sm-3 page-sidebar col-thin-left">
+            {{!--
+            <div class="col-sm-3 page-sidebar col-thin-left">
                 <aside>
                     <div class="inner-box no-padding">
                         <div class="inner-box-content"><a href="#"><img class="img-responsive" src="/static/images/site/app.jpg" alt="tv"></a>

@@ -1,0 +1,31 @@
+<div class="main-container">
+    <div class="container">
+        <div class="pull-right backtolist"><a href="sub-category-sub-location.html"> <i class="fa fa-angle-double-left"></i> Back to Results</a></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 page-content col-thin-right">
+                <div class="inner inner-box ads-details-wrapper">
+                    <h2>{{item.name}}</h2>
+                    <div class="ads-image">
+                        <h1 class="pricetag"> R {{item.price}}</h1>
+                    </div>
+                    <div class="Ads-Details">
+                        <h5 class="list-title"><strong>Description ({{item.code}})</strong></h5>
+                        <div class="row">
+                            <div class="ads-details-info col-md-8">
+                                <p>{{item.description}}</p>
+                                <h4>More Info</h4>
+                                <ul class="list-circle">
+                                    {{#each item.attributes as |value key|}}
+                                    <li>{{key}} : {{value}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

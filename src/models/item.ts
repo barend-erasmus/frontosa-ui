@@ -1,5 +1,6 @@
 // Imports
 import * as hash from 'object-hash';
+import * as to from 'to-case';
 
 // Imports models
 import { ProcessedRow } from './processed-row';
@@ -19,19 +20,21 @@ export class Item {
                 attributes[name] = row.row[i];
             }
         }
-
-        const subCategoryName: string = row.header[0];
+        
+        const subCategoryName: string = to.capital(to.lower(row.header[0].toString()));
         const code: string = row.row[0];
         const description: string = row.row[3];
         const price: number = parseFloat(row.row[1]);
         const categoryCode: string = code.split('-')[0];
         const categoryName: string = null;
         const h: string = hash(row);
+        const name: string = to.capital(to.lower(description.split(',')[0].toString()));
 
-        return new Item(code, description, price, attributes, categoryCode, categoryName, subCategoryName, h);
+        return new Item(name, code, description, price, attributes, categoryCode, categoryName, subCategoryName, h);
     }
 
     constructor(
+        public name: string,
         public code: string,
         public description: string,
         public price: number,
@@ -42,12 +45,12 @@ export class Item {
         public hash: string) {
 
             if (!this.categoryName) {
-                this.categoryName = this.categoryCodeToCategoryName(this.categoryCode);
+                this.categoryName = Item.convertCategoryCodeToCategoryName(this.categoryCode);
             }
 
     }
 
-    private categoryCodeToCategoryName(categoryCode: string): string {
+    public static convertCategoryCodeToCategoryName(categoryCode: string): string {
         const map: any = {
             "SY": 'My Office & Black Box',
             "BS": 'Bundle Special',
@@ -133,5 +136,4 @@ export class Item {
 
         return map[categoryCode];
     }
-
 }
