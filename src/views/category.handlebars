@@ -23,14 +23,6 @@
             <div class="col-sm-3 page-sidebar mobile-filter-sidebar">
                 <aside>
                     <div class="inner-box">
-                        <div class="categories-list  list-filter">
-                            <h5 class="list-title"><strong><a href="#">Sub Categories</a></strong></h5>
-                            <ul class=" list-unstyled">
-                                {{#each category.subCategories as |categoryValue categoryKey|}}
-                                <li><a href="#"><span class="title">{{categoryValue.name}}</span><span class="count">&nbsp;{{categoryValue.count}}</span></a></li>
-                                {{/each}}
-                            </ul>
-                        </div>
                         <div class="locations-list  list-filter">
                             <h5 class="list-title"><strong><a href="#">Price range</a></strong></h5>
                             <form role="form" class="form-inline ">
@@ -76,7 +68,6 @@
                         {{#each pages as |value key|}}
                         <li><a href="/category?code={{@root.category.code}}&page={{value}}&query={{@root.query}}">{{value}}</a></li>
                         {{/each}}
-                        <li><a class="pagination-btn" href="#">Next &raquo;</a></li>
                     </ul>
                 </div>
             </div>

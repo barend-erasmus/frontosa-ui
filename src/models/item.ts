@@ -16,12 +16,18 @@ export class Item {
             }
 
             if (row.header[i]) {
-                const name = row.header[i].toString().replace(/\./g, '-');
-                attributes[name] = row.row[i];
+                let name = row.header[i].toString().replace(/\./g, '-');
+                name = to.capital(to.lower(name.toString()));
+                const value = row.row[i]? to.capital(to.lower(row.row[i].toString())) : null;
+
+                if (name === value) {
+                    continue;
+                }
+
+                attributes[name] = value;
             }
         }
         
-        const subCategoryName: string = to.capital(to.lower(row.header[0].toString()));
         const code: string = row.row[0];
         const description: string = row.row[3];
         const price: number = parseFloat(row.row[1]);
@@ -30,8 +36,7 @@ export class Item {
         const h: string = hash(row);
         const name: string = to.capital(to.lower(description.split(',')[0].toString()));
         
-
-        return new Item(name, code, description, price, attributes, categoryCode, categoryName, subCategoryName, h);
+        return new Item(name, code, description, price, attributes, categoryCode, categoryName, h);
     }
 
     constructor(
@@ -42,7 +47,6 @@ export class Item {
         public attributes: {},
         public categoryCode: string,
         public categoryName: string,
-        public subCategoryName: string,
         public hash: string) {
 
             if (!this.categoryName) {
@@ -114,7 +118,7 @@ export class Item {
             "SW": 'Switches',
             "DP": 'Dotmatrix Printers',
             "IP": 'InkJet Printers',
-            "LP": 'Lazer Printers',
+            "LP": 'Laser Printers',
             "FX": 'Fax Machines',
             "SN": 'Scanners',
             "KS": 'KVM Switches',
@@ -132,9 +136,16 @@ export class Item {
             "LL": 'LED Lamps',
             "PJ": 'Projectors',
             "DV": 'Digital Video Cameras',
-            "DC": 'Digital Cameras'
+            "DC": 'Digital Cameras',
+            "OC": "Other Coolers",
+            "IT": "Inner Trays",
+            "ID": "Other Input Devices",
+            "TO": "Toners",
+            "DI": "Discs",
+            "IC": "Interface Converters",
+            "CO": "Cable Converters"
         };
 
-        return map[categoryCode];
+        return map[categoryCode.toUpperCase()];
     }
 }

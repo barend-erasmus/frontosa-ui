@@ -20,10 +20,10 @@ export class HomeRouter {
             const categories: Category[] = yield itemService.listCategories();
 
             res.render('home', {
-                categoriesOne: categories.slice(0, 20),
-                categoriesTwo: categories.slice(20, 40),
-                categoriesThree: categories.slice(40, 60),
-                categoriesFour: categories.slice(60)
+                categoriesOne: categories.slice(0, 25),
+                categoriesTwo: categories.slice(25, 50),
+                categoriesThree: categories.slice(50, 75),
+                categoriesFour: categories.slice(75)
             });
         });
     }
