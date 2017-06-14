@@ -18,7 +18,7 @@ export class Item {
             if (row.header[i]) {
                 let name = row.header[i].toString().replace(/\./g, '-');
                 name = to.capital(to.lower(name.toString()));
-                const value = row.row[i]? to.capital(to.lower(row.row[i].toString())) : null;
+                const value = row.row[i] ? to.capital(to.lower(row.row[i].toString())) : null;
 
                 if (name === value) {
                     continue;
@@ -27,7 +27,7 @@ export class Item {
                 attributes[name] = value;
             }
         }
-        
+
         const code: string = row.row[0];
         const description: string = row.row[3];
         const price: number = parseFloat(row.row[1]);
@@ -35,7 +35,7 @@ export class Item {
         const categoryName: string = null;
         const h: string = hash(row);
         const name: string = to.capital(to.lower(description.split(',')[0].toString()));
-        
+
         return new Item(name, code, description, price, attributes, categoryCode, categoryName, h);
     }
 
@@ -49,9 +49,9 @@ export class Item {
         public categoryName: string,
         public hash: string) {
 
-            if (!this.categoryName) {
-                this.categoryName = Item.convertCategoryCodeToCategoryName(this.categoryCode);
-            }
+        if (!this.categoryName) {
+            this.categoryName = Item.convertCategoryCodeToCategoryName(this.categoryCode);
+        }
 
     }
 
