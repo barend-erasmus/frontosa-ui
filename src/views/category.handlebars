@@ -6,8 +6,10 @@
                 <p class="sub animateme fittext3 animated fadeIn"> Easily search for an item </p>
                 <form action="/category" method="GET" class="row search-row animated fadeInUp">
                     <div class="col-lg-8 col-sm-8 search-col relative"><i class="icon-docs icon-append"></i>
-                        <input type="text" name="query" class="form-control has-icon" placeholder="I'm looking for a ..." value="">
+                        <input type="text" name="query" class="form-control has-icon" placeholder="I'm looking for a ..." value="{{query}}">
                         <input type="hidden" name="code" value="{{category.code}}" />
+                        <input type="hidden" name="min" value="{{maxPrice}}" />
+                        <input type="hidden" name="max" value="{{minPrice}}" />
                     </div>
                     <div class="col-lg-4 col-sm-4 search-col">
                         <button type="submit" class="btn btn-primary btn-search btn-block"><i class="icon-search"></i><strong>Find</strong></button>
@@ -27,16 +29,18 @@
                             <h5 class="list-title"><strong><a href="#">Price range</a></strong></h5>
                             <form role="form" class="form-inline ">
                                 <div class="form-group col-sm-4 no-padding">
-                                    <input type="text" placeholder="R 2000 " id="minPrice" class="form-control">
+                                    <input type="text" placeholder="R 2000 " name="min" value="{{minPrice}}" class="form-control">
                                 </div>
                                 <div class="form-group col-sm-1 no-padding text-center hidden-xs"> -</div>
                                 <div class="form-group col-sm-4 no-padding">
-                                    <input type="text" placeholder="R 3000 " id="maxPrice" class="form-control">
+                                    <input type="text" placeholder="R 3000 " name="max" value="{{maxPrice}}" class="form-control">
                                 </div>
                                 <div class="form-group col-sm-3 no-padding">
-                                    <button class="btn btn-default pull-right btn-block-xs" type="button">GO
+                                    <button class="btn btn-primary pull-right btn-block-xs" type="submit">GO
                                     </button>
                                 </div>
+                                <input type="hidden" name="code" value="{{category.code}}" />
+                                <input type="hidden" name="query" value="{{query}}" />
                             </form>
                             <div style="clear:both"></div>
                         </div>

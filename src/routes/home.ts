@@ -36,17 +36,21 @@ export class HomeRouter {
             const query: string = req.query.query;
             const pageSize: number = 10;
             const start: number = req.query.page ? req.query.page - 1 : 0;
+            const minPrice = req.query.min;
+            const maxPrice = req.query.max;
 
             const itemService: ItemService = new ItemService('mongodb://mongo:27017/frontosa');
             const category: Category = yield itemService.findCategory(categoryCode);
-            const items: Item[] = yield itemService.listItems(categoryCode, query, 'name', start, pageSize);
-            const numberOfPages: number = yield itemService.numberOfPages(categoryCode, query, pageSize);
+            const items: Item[] = yield itemService.listItems(categoryCode, query, 'name', start, pageSize, minPrice, maxPrice);
+            const numberOfPages: number = yield itemService.numberOfPages(categoryCode, query, pageSize, minPrice, maxPrice);
 
             res.render('category', {
                 query: query,
                 category: category,
                 items: items,
-                pages: HomeRouter.getPages(numberOfPages).splice(start, 6)
+                pages: HomeRouter.getPages(numberOfPages).splice(start, 6),
+                minPrice: minPrice,
+                maxPrice: maxPrice
             });
         });
     }

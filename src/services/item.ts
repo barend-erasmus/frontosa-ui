@@ -50,7 +50,7 @@ export class ItemService {
         });
     }
 
-    public listItems(categoryCode: string, query: string, sortPropertyName: string, start: number, length: number): Promise<Item[]> {
+    public listItems(categoryCode: string, query: string, sortPropertyName: string, start: number, length: number, minPrice: string, maxPrice: string): Promise<Item[]> {
         const self = this;
         return co(function* () {
 
@@ -64,14 +64,22 @@ export class ItemService {
                 findQuery['categoryCode'] = categoryCode;
             }
 
-            if (query) {
-                findQuery['$text'] = { $search: `"${query}"` };
+
+            if (minPrice && maxPrice) {
+                findQuery['price'] = { $lte: parseFloat(maxPrice), $gte: parseFloat(minPrice) };
+            } else if (minPrice) {
+                findQuery['price'] = { $gte: parseFloat(minPrice) };
+            } else if (maxPrice) {
+                findQuery['price'] = { $lte: parseFloat(maxPrice) };
             }
 
             const sortQuery: {} = {};
             sortQuery[sortPropertyName] = 1;
 
-            const items: Item[] = yield collection.find(findQuery).sort(sortQuery).skip(start).limit(length).toArray();
+            let items: Item[] = yield collection.find(findQuery).sort(sortQuery).toArray();
+
+            items = query? items.filter((x: Item) => self.filter(x, query)) : items;
+            items = items.slice(start, start + length);
 
             db.close();
 
@@ -97,7 +105,7 @@ export class ItemService {
         });
     }
 
-    public numberOfPages(categoryCode: string, query: string, pageSize: number): Promise<number> {
+    public numberOfPages(categoryCode: string, query: string, pageSize: number, minPrice: string, maxPrice: string): Promise<number> {
         const self = this;
         return co(function* () {
 
@@ -111,15 +119,49 @@ export class ItemService {
                 findQuery['categoryCode'] = categoryCode;
             }
 
-            if (query) {
-                findQuery['$text'] = { $search: `"${query}"` };
+            if (minPrice && maxPrice) {
+                findQuery['price'] = { $lte: parseFloat(maxPrice), $gte: parseFloat(minPrice) };
+            } else if (minPrice) {
+                findQuery['price'] = { $gte: parseFloat(minPrice) };
+            } else if (maxPrice) {
+                findQuery['price'] = { $lte: parseFloat(maxPrice) };
             }
 
-            const items: Item[] = yield collection.find(findQuery).toArray();
+            let items: Item[] = yield collection.find(findQuery).toArray();
+
+            items = query? items.filter((x: Item) => self.filter(x, query)) : items;
 
             db.close();
 
             return Math.ceil(items.length / pageSize);
         });
+    }
+
+    private filter(item: Item, query: string): boolean {
+        query = query.toLowerCase();
+
+        const words: string[] = query.split(' ');
+
+        let isInDescription = true;
+
+        for (const word of words) {
+            const rx = new RegExp(`${word}`);
+
+            if (!rx.test(item.description.toLowerCase())) {
+                isInDescription = false;
+            }
+        }
+
+        let isInName = true;
+
+        for (const word of words) {
+            const rx = new RegExp(`${word}`);
+
+            if (!rx.test(item.name.toLowerCase())) {
+                isInName = false;
+            }
+        }
+
+        return isInDescription || isInName;
     }
 }
