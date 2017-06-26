@@ -12,8 +12,11 @@
         "npm --prefix /opt/frontosa-ui install",
         "docker stop frontosa-ui",
         "docker rm frontosa-ui",
+        "docker stop frontosa-db",
+        "docker rm frontosa-db",
         "docker build --no-cache -t frontosa-ui /docker-uploads/frontosa-ui",
-        "docker run -d -p 8080:3000 --name frontosa-ui -v /logs:/logs -v /opt/frontosa-ui:/opt/frontosa-ui -t frontosa-ui"
+        "docker run --name frontosa-db -p 9001:27017 -v /opt/frontosa-db:/data/db -d mongo",
+        "docker run -d -p 8080:3000 --name frontosa-ui -v /logs:/logs --link frontosa-db:mongo -v /opt/frontosa-ui:/opt/frontosa-ui -t frontosa-ui"
     ],
     "directories": [
         {
