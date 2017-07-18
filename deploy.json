@@ -13,6 +13,7 @@
 
         "mkdir /logs",
         "npm --prefix /opt/frontosa-ui install",
+        "pm2 stop frontosa-ui",
         "pm2 start /opt/frontosa-ui/src/app.js --name frontosa-ui -- --prod --port 9002"
     ],
     "directories": [
