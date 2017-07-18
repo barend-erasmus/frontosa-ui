@@ -16,7 +16,7 @@ export class HomeRouter {
 
         co(function* () {
 
-            const itemService: ItemService = new ItemService('mongodb://localhost:27017/frontosa-ui');
+            const itemService: ItemService = new ItemService('mongodb://207.154.251.91:27017/frontosa-ui');
             const categories: Category[] = yield itemService.listCategories();
 
             res.render('home', {
@@ -39,7 +39,7 @@ export class HomeRouter {
             const minPrice = req.query.min;
             const maxPrice = req.query.max;
 
-            const itemService: ItemService = new ItemService('mongodb://localhost:27017/frontosa-ui');
+            const itemService: ItemService = new ItemService('mongodb://207.154.251.91:27017/frontosa-ui');
             const category: Category = yield itemService.findCategory(categoryCode);
             const items: Item[] = yield itemService.listItems(categoryCode, query, 'name', start, pageSize, minPrice, maxPrice);
             const numberOfPages: number = yield itemService.numberOfPages(categoryCode, query, pageSize, minPrice, maxPrice);
@@ -60,7 +60,7 @@ export class HomeRouter {
         co(function* () {
             const code: string = req.query.code;
 
-            const itemService: ItemService = new ItemService('mongodb://localhost:27017/frontosa-ui');
+            const itemService: ItemService = new ItemService('mongodb://207.154.251.91:27017/frontosa-ui');
             const item: Item = yield itemService.findItem(code);
 
             res.render('item', {

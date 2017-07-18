@@ -53,11 +53,11 @@
                     {{#each items as |value key|}}
                     <div class="item-list">
                         <div class="col-sm-2 no-padding photobox">
-                            <div class="add-image"><a href="/item?code={{value.code}}"><img class="thumbnail no-margin" src="http://via.placeholder.com/350x350" alt="img"></a></div>
+                            <div class="add-image"><a href="/item?code={{encode value.code}}"><img class="thumbnail no-margin" src="http://via.placeholder.com/350x350" alt="img"></a></div>
                         </div>
                         <div class="col-sm-7 add-desc-box">
                             <div class="add-details">
-                                <h5 class="add-title"><a href="/item?code={{value.code}}">{{value.name}}</a>
+                                <h5 class="add-title"><a href="/item?code={{encode value.code}}">{{value.name}}</a>
                                 </h5>
                             </div>
                         </div>

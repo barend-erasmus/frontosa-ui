@@ -20,7 +20,7 @@ let config = require('./config').config;
 const argv = require('yargs').argv;
 
 if (argv.prod) {
-  config = require('./config.prod').config;
+    config = require('./config.prod').config;
 }
 
 export class FrontosaUiApi {
@@ -59,6 +59,11 @@ export class FrontosaUiApi {
         app.engine('handlebars', exphbs({
             defaultLayout: 'main',
             layoutsDir: path.join(__dirname, 'views/layouts'),
+            helpers: {
+                encode: (str: string) => { 
+                    return encodeURIComponent(str);
+                 }
+            }
         }));
         app.set('view engine', 'handlebars');
         app.set('views', path.join(__dirname, 'views'));
