@@ -80,7 +80,7 @@ export class FrontosaUiApi {
     }
 }
 
-const port = 3000;
+const port = argv.port || 3000;
 const api = new FrontosaUiApi(express(), port);
 api.run();
 
